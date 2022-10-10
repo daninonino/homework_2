@@ -1,1 +1,6 @@
-# homework_2
+# homework_2  
+
+## Integrantes  
+
+- Daniela Novoa
+- Jorge Santis
