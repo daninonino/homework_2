@@ -14,7 +14,7 @@ public class Comprador {
         return getVuelto();
     } 
     public String queBebiste(){
-        return "gluglu: " + sabor;
+        return "gluglu: " + beber;
     }
 
 }

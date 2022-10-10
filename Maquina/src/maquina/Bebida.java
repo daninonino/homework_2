@@ -5,15 +5,12 @@ package maquina;
 abstract class Bebida {
     private int serie;
     private int precio;
-    private String tipo;
-    public Bebida(int s, int p, String name){
+    public Bebida(int s, int p){
         serie = s;
         precio = p;
-        tipo = name;
+        
     }
-    public String beber(){
-        return tipo;
-    }
+    public abstract String beber();
     public int getSerie(){
         return serie;
     }
@@ -24,17 +21,27 @@ abstract class Bebida {
 
 class CocaCola extends Bebida{
     public CocaCola(int s, int p) {
-       super(s,p, "CocaCola");
+       super(s,p);
+    }
+    public String beber(){
+        return "Gluglu: Coca Cola";
+    
     }
 }
 class Sprite extends Bebida{
     public Sprite(int s, int p) {
-       super(s,p, "Sprite");
+       super(s,p);
+    }
+    public String beber(){
+        return "Gluglu: Sprite";
     }
 }
 
 class Fanta extends Bebida{
     public Fanta(int s, int p) {
-       super(s,p, "Fanta");
+       super(s,p);
+    }
+    public String beber(){
+        return "Gluglu: Fanta";
     }
 }
