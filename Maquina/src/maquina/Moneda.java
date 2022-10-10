@@ -1,13 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package maquina;
 
-/**
- *
- * @author danino
- */
+
 public class Moneda {
+    public Moneda getSerie(){}
+    abstract int getValor();
+}
+
+class Moneda1500 extends Moneda {
+    public Moneda1500(){
+        
+    }
     
 }
+class Moneda1000 extends Moneda {}
+class Moneda500 extends Moneda {}
+class Moneda100 extends Moneda {}

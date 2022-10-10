@@ -1,13 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package maquina;
 
-/**
- *
- * @author danino
- */
-public class Bebida {
-    
+
+abstract class Bebida {
+    private int serie;
+    private int precio;
+    private String tipo;
+    public Bebida(int s, int p, String name){
+        serie = s;
+        precio = p;
+        tipo = name;
+    }
+    public String beber(){
+        return tipo;
+    }
+    public int getSerie(){
+        return serie;
+    }
+    public int getPrecio(){
+        return precio;
+    }
+}
+
+class CocaCola extends Bebida{
+    public CocaCola(int s, int p) {
+       super(s,p, "CocaCola");
+    }
+}
+class Sprite extends Bebida{
+    public Sprite(int s, int p) {
+       super(s,p, "Sprite");
+    }
+}
+
+class Fanta extends Bebida{
+    public Fanta(int s, int p) {
+       super(s,p, "Fanta");
+    }
 }
