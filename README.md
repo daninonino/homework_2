@@ -2,5 +2,5 @@
 
 ## Integrantes  
 
-- Daniela Novoa
-- Jorge Santis
+- Daniela Alejandra Novoa Opazo
+- Jorge Ignacio Santis Martinez
