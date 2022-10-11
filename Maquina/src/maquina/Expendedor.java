@@ -1,15 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package maquina;
 
 import java.util.ArrayList;
         
 public class Expendedor{
-    ArrayList<Bebida> fantas;
-    ArrayList<Bebida> sprites;
-    ArrayList<Bebida> cocacolas;
+    private ArrayList<Bebida> fantas;
+    private ArrayList<Bebida> sprites;
+    private ArrayList<Bebida> cocacolas;
     private int money;
     public Expendedor(int cant, int precio){
         money = precio;
@@ -23,15 +20,41 @@ public class Expendedor{
         }
     }
     
-    public int getVuelto(){
+    public Moneda getVuelto(){
+        
+        return 0;
         
     }
-    public Bebida ComprarBebida(int i, Moneda m){
-        
-        if(i == 1){
-              
+    public Bebida ComprarBebida(int num, Moneda m) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{
+        Bebida drink;
+        if(m.getValor()== 100 || m.getValor()==500 || m.getValor()== 1000){
+            if(m.getValor() > money){
+                switch (num) {
+                    case 1 -> drink = cocacolas.remove(0);
+                    case 2 -> drink = sprites.remove(0);
+                    case 3 -> drink = fantas.remove(0);
+                }
+            }
         }
- 
+        return drink;
     }
-    
+
+    private static class NoHayBebidaException {
+
+        public NoHayBebidaException() {
+        }
+    }
+
+    private static class PagoIncorrectoException extends Exception {
+
+        public PagoIncorrectoException() {
+        }
+    }
+
+    private static class PagoInsuficienteException extends Exception {
+
+        public PagoInsuficienteException() {
+            
+        }
+    }
 }
