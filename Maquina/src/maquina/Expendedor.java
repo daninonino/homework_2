@@ -4,57 +4,91 @@ package maquina;
 import java.util.ArrayList;
         
 public class Expendedor{
-    private ArrayList<Bebida> fantas;
-    private ArrayList<Bebida> sprites;
-    private ArrayList<Bebida> cocacolas;
+    private Deposito fantas;
+    private Deposito sprites;
+    private Deposito cocacolas;
     private int money;
+    private ArrayList<Moneda> coin;
     public Expendedor(int cant, int precio){
+        this.coin = null;
         money = precio;
-        fantas = new ArrayList<Bebida>();
-        sprites = new ArrayList<Bebida>();
-        cocacolas = new ArrayList<Bebida>();
+        fantas = new Deposito();
+        sprites = new Deposito();
+        cocacolas = new Deposito();
         for(int i = 0; i < cant; i++){
-            fantas.add(new Fanta(100+i,precio));
-            sprites.add(new Sprite(200+i,precio));
-            cocacolas.add(new CocaCola(300+i,precio));
+            fantas.addBebida(new Fanta(100+i,precio));
+            sprites.addBebida(new Sprite(200+i,precio));
+            cocacolas.addBebida(new CocaCola(300+i,precio));
         }
     }
     
     public Moneda getVuelto(){
-        
-        return 0;
-        
+        if(coin.isEmpty()){
+            return null;
+        }else{
+            return coin.remove(0);
+        }
     }
-    public Bebida ComprarBebida(int num, Moneda m) throws NoHayBebidaException, PagoInsuficienteException, PagoIncorrectoException{
-        Bebida drink;
-        if(m.getValor()== 100 || m.getValor()==500 || m.getValor()== 1000){
-            if(m.getValor() > money){
+    
+    public Bebida ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
+        Bebida drink = null;
+        String tipoBebida = null;
+        if(m.getValor()!= 0){
+            if(m.getValor() >= money){
                 switch (num) {
-                    case 1 -> drink = cocacolas.remove(0);
-                    case 2 -> drink = sprites.remove(0);
-                    case 3 -> drink = fantas.remove(0);
+                    case 1 -> {
+                        drink = cocacolas.getBebida();
+                        tipoBebida = "CocaCola";
+                    }
+                    case 2 -> {
+                        drink = sprites.getBebida();
+                        tipoBebida = "Sprite";
+                    }
+                    case 3 -> {
+                        drink = fantas.getBebida();
+                        tipoBebida = "Fanta";
+                    }
                 }
-            }
-        }
-        return drink;
+                if(drink != null){
+                    for(int i = 0; i < (m.getValor()/100);i++){
+                        Moneda cien = null;
+                        cien = new Moneda100(cien);
+                        coin.add(cien);
+                    }
+                    return drink;
+                }
+                else if(tipoBebida != null){
+                    coin.add(m);
+                    throw new NoHayBebidaException("Error: No quedan "+tipoBebida+".");
+                }
+                else{
+                    coin.add(m);
+                    throw new NoHayBebidaException("Error: Deposito incorrecto");
+                }
+            } else {
+                coin.add(m);
+                throw new PagoInsuficienteException("Error: Pago insuficiente.");
+            }  
+        } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
     }
+}
 
-    private static class NoHayBebidaException {
-
-        public NoHayBebidaException() {
-        }
+class NoHayBebidaException extends Exception {
+    public NoHayBebidaException(String text) {
+        super(text);
     }
+}
 
-    private static class PagoIncorrectoException extends Exception {
+class PagoIncorrectoException extends Exception {
 
-        public PagoIncorrectoException() {
-        }
+    public PagoIncorrectoException(String text) {
+        super(text);
     }
+}
 
-    private static class PagoInsuficienteException extends Exception {
+class PagoInsuficienteException extends Exception {
 
-        public PagoInsuficienteException() {
-            
-        }
+    public PagoInsuficienteException(String text) {
+        super(text);
     }
 }
