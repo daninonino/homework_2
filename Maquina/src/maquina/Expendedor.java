@@ -33,7 +33,7 @@ public class Expendedor{
     public Bebida ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
         Bebida drink = null;
         String tipoBebida = null;
-        if(m.getValor()!= 0){
+        if(m != null){
             if(m.getValor() >= money){
                 switch (num) {
                     case 1 -> {
