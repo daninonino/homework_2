@@ -8,11 +8,21 @@ public class Comprador {
     private Bebida bebida;
     
     
-    public Comprador(Moneda mon, int tipoBebida, Expendedor exp){ 
-        ArrayList<Moneda> moneda=new ArrayList<Moneda>();
-        moneda.add(mon);
+    public Comprador(Moneda mon, int tipoBebida, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{ 
+        ArrayList<Moneda> moneda = new ArrayList<Moneda>();
         cantidadTotal = mon.getValor();
-        bebida = exp.ComprarBebida(tipoBebida, mon);
+        try{
+            bebida = exp.ComprarBebida(tipoBebida, mon);
+            sabor = bebida.beber();
+        }catch (PagoIncorrectoException | NoHayBebidaException | PagoInsuficienteException e){
+            System.out.println(e);
+        }finally{
+            Moneda d = null;
+            do{
+                d = exp.getVuelto();
+                if(d != null) moneda.add(d);
+            }while(d != null);
+        }
         
     }
     public int cantidadTotal(){
@@ -20,7 +30,7 @@ public class Comprador {
     }
     
     public int cuantoVuelto(){
-        return getVuelto();
+        return moneda.size();
     } 
     public String queBebiste(){
         return "gluglu: " + bebida.beber();

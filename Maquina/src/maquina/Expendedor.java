@@ -50,7 +50,7 @@ public class Expendedor{
                     }
                 }
                 if(drink != null){
-                    for(int i = 0; i < (m.getValor()/100);i++){
+                    for(int i = 0; i < (m.getValor()-money)/100;i++){
                         Moneda cien = null;
                         cien = new Moneda100(cien);
                         coin.add(cien);
@@ -59,7 +59,7 @@ public class Expendedor{
                 }
                 else if(tipoBebida != null){
                     coin.add(m);
-                    throw new NoHayBebidaException("Error: No quedan "+tipoBebida+".");
+                    throw new NoHayBebidaException("Error: No quedan "+tipoBebida+"s.");
                 }
                 else{
                     coin.add(m);
