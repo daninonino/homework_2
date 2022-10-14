@@ -36,23 +36,25 @@ public class Expendedor{
         if(m != null){
             if(m.getValor() >= money){
                 switch (num) {
-                    case 1 -> {
+                    case 1 :
                         drink = cocacolas.getBebida();
                         tipoBebida = "CocaCola";
-                    }
-                    case 2 -> {
+                        break;
+     
+                    case 2 :
                         drink = sprites.getBebida();
                         tipoBebida = "Sprite";
-                    }
-                    case 3 -> {
+                        break;
+                    
+                    case 3 :
                         drink = fantas.getBebida();
                         tipoBebida = "Fanta";
-                    }
+                        break;
                 }
                 if(drink != null){
                     for(int i = 0; i < (m.getValor()-money)/100;i++){
                         Moneda cien = null;
-                        cien = new Moneda100(cien);
+                        cien = new Moneda100();
                         coin.add(cien);
                     }
                     return drink;
