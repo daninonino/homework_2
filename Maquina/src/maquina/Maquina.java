@@ -12,18 +12,17 @@ public class Maquina {
         Moneda1500 mon1500=new Moneda1500();
         
         //Se crea un expendedor
-        Expendedor exp=new Expendedor(50, 1000);      
+        Expendedor exp=new Expendedor(0, 1000);      
         
        //Se crea un comprador
-        Comprador comprador=new Comprador(mon1500, 1, exp);
+        Comprador comprador=new Comprador(mon1500, 3, exp);
         
         //El comprador elige que bebida quiere elegir del expendedor, y este recibe su moneda
         //atraves de esta accion tambien bebe la bebida y guardamos el sabor en una variable
-        exp.ComprarBebida(2, mon1500);
         
         //Cuestionamos al comprador sobre el sabor de su bebida y su vuelto recibido
-        System.out.println(comprador.queBebiste());
-        System.out.println(comprador.cuantoVuelto());
+        System.out.println("Que bebiste: "+comprador.queBebiste());
+        System.out.println("Vuelto: "+comprador.cuantoVuelto());
     
     }
     

@@ -7,7 +7,7 @@ public class Expendedor{
     private Deposito Sprite;
     private Deposito Fanta;
     private Deposito Coke;
-    private ArrayList<DepVuelto> coin;
+    private DepVuelto dep2;
     private int money;
     
     public Expendedor(int cant, int precio){
@@ -28,8 +28,7 @@ public class Expendedor{
     public Bebida ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
         Bebida drink = null;
         String tipoBebida = null;
-        Deposito dep=new Deposito(num);
-        DepVuelto dep2=new DepVuelto();
+        dep2=new DepVuelto();
         if(m != null){
             if(m.getValor() >= money){
                 switch (num) {
@@ -70,8 +69,7 @@ public class Expendedor{
         } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
     }
     public Moneda getVuelto() {
-            DepVuelto dep2=new DepVuelto();
-            return dep2.getMoneda();
+        return dep2.getMoneda();
         
     }
 }
