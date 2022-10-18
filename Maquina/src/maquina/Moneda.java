@@ -7,25 +7,16 @@ public abstract class Moneda {
     
     public Moneda(){}
     
-    public Moneda getSerie(){
-        Moneda serie=dep.getMoneda();
-        return serie;
+    public String getSerie(){
+        return this.toString();
     }
     
     public abstract int getValor();
     
-    public String toString(){
-        return "Serie de Moneda: "+ getSerie();
-    }
-    
 }
 
 class Moneda1500 extends Moneda {
-    public Moneda1500(){}
-    
-    public Moneda getSerie(Moneda serie){
-        return serie;
-    }    
+    public Moneda1500(){}   
 
     @Override
     public int getValor() {

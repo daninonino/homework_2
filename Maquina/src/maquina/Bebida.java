@@ -24,7 +24,7 @@ class CocaCola extends Bebida{
        super(s,p);
     }
     public String beber(){
-        return "Coca Cola";
+        return "cocacola";
     
     }
 }

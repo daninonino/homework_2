@@ -30,7 +30,7 @@ public class Comprador {
         return cantidadTotal;
     } 
     public String queBebiste(){
-        return "gluglu: " + sabor;
+        return  sabor;
     }
 
 }
