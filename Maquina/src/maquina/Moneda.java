@@ -3,13 +3,20 @@ package maquina;
 
 
 public abstract class Moneda {
+    private DepVuelto dep;
     
     public Moneda(){}
     
-    public Moneda getSerie(Moneda serie){
+    public Moneda getSerie(){
+        Moneda serie=dep.getMoneda();
         return serie;
     }
+    
     public abstract int getValor();
+    
+    public String toString(){
+        return "Serie de Moneda: "+ getSerie();
+    }
     
 }
 

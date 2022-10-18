@@ -8,7 +8,7 @@ public class Comprador {
     private Bebida bebida;
     
     public Comprador(Moneda mon, int tipoBebida, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{ 
-        moneda = new ArrayList<Moneda>();
+        moneda = new ArrayList<>();
         sabor = null;
         try{
             bebida = exp.ComprarBebida(tipoBebida, mon);
