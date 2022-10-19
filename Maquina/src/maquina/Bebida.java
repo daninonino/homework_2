@@ -1,4 +1,3 @@
-
 package maquina;
 
 
@@ -24,7 +23,7 @@ class CocaCola extends Bebida{
        super(s,p);
     }
     public String beber(){
-        return "Gluglu: Coca Cola";
+        return "cocacola";
     
     }
 }
@@ -33,7 +32,7 @@ class Sprite extends Bebida{
        super(s,p);
     }
     public String beber(){
-        return "Gluglu: Sprite";
+        return "Sprite";
     }
 }
 
@@ -42,6 +41,6 @@ class Fanta extends Bebida{
        super(s,p);
     }
     public String beber(){
-        return "Gluglu: Fanta";
+        return "Fanta";
     }
 }

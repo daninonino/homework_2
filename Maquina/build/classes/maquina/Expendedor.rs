@@ -1,0 +1,4 @@
+maquina.Expendedor
+maquina.PagoIncorrectoException
+maquina.NoHayBebidaException
+maquina.PagoInsuficienteException

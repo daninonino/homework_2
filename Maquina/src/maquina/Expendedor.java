@@ -1,37 +1,95 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package maquina;
 
 import java.util.ArrayList;
         
 public class Expendedor{
-    ArrayList<Bebida> fantas;
-    ArrayList<Bebida> sprites;
-    ArrayList<Bebida> cocacolas;
+    private Deposito Sprite;
+    private Deposito Fanta;
+    private Deposito Coke;
+    private DepVuelto dep2;
     private int money;
+    
     public Expendedor(int cant, int precio){
+        Coke= new Deposito(cant);
+        Sprite= new Deposito(cant);
+        Fanta= new Deposito(cant);
+        
         money = precio;
-        fantas = new ArrayList<Bebida>();
-        sprites = new ArrayList<Bebida>();
-        cocacolas = new ArrayList<Bebida>();
+        
         for(int i = 0; i < cant; i++){
-            fantas.add(new Fanta(100+i,precio));
-            sprites.add(new Sprite(200+i,precio));
-            cocacolas.add(new CocaCola(300+i,precio));
+            Fanta.addBebida(new Fanta(1000+i,precio));
+            Sprite.addBebida(new Sprite(2000+i,precio));
+            Coke.addBebida(new CocaCola(3000+i,precio));
         }
+
     }
     
-    public int getVuelto(){
+    public Bebida ComprarBebida(int num, Moneda m) throws PagoInsuficienteException, PagoIncorrectoException, NoHayBebidaException{
+        Bebida drink = null;
+        String tipoBebida = null;
+        dep2=new DepVuelto();
+        if(m != null){
+            if(m.getValor() >= money){
+                switch (num) {
+                    case 1 :
+                        drink = Coke.getBebida();
+                        tipoBebida = "CocaCola";
+                        break;
+     
+                    case 2 :
+                        drink = Sprite.getBebida();
+                        tipoBebida = "Sprite";
+                        break;
+                    
+                    case 3 :
+                        drink = Fanta.getBebida();
+                        tipoBebida = "Fanta";
+                        break;
+                }
+                if(drink != null){
+                    for(int i = 0; i < (m.getValor()-money)/100;i++){
+                        Moneda cien = new Moneda100();
+                        dep2.addMoneda(cien);
+                    }
+                    return drink;
+                }
+                else if(tipoBebida != null){
+                    dep2.addMoneda(m);
+                    throw new NoHayBebidaException("Error: No quedan "+tipoBebida+"s.");
+                }
+                else{
+                    dep2.addMoneda(m);
+                    throw new NoHayBebidaException("Error: Deposito incorrecto");
+                }
+            } else {
+                dep2.addMoneda(m);
+                throw new PagoInsuficienteException("Error: Pago insuficiente.");
+            }  
+        } else throw new PagoIncorrectoException("Error: No ha ingresado monedas.");
+    }
+    public Moneda getVuelto() {
+        return dep2.getMoneda();
         
     }
-    public Bebida ComprarBebida(int i, Moneda m){
-        
-        if(i == 1){
-              
-        }
- 
+}
+
+class NoHayBebidaException extends Exception {
+    public NoHayBebidaException(String text) {
+        super(text);
     }
-    
+}
+
+class PagoIncorrectoException extends Exception {
+
+    public PagoIncorrectoException(String text) {
+        super(text);
+    }
+}
+
+class PagoInsuficienteException extends Exception {
+
+    public PagoInsuficienteException(String text) {
+        super(text);
+    }
 }
