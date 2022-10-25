@@ -15,8 +15,7 @@ public class DepVuelto{
         if(m.isEmpty()){
             return null;
         }else{
-            Moneda mon = m.remove(0);
-            return mon;
+            return m.remove(0);
             }
         
         }

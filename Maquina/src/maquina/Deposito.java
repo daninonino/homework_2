@@ -15,8 +15,7 @@ public class Deposito{
         if(v.isEmpty()){
             return null;
         }else{
-            Bebida b = v.remove(0);
-            return b;
+            return v.remove(0);
         }
     }
     public void addBebida(Bebida drink){
