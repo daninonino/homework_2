@@ -32,7 +32,7 @@ class Sprite extends Bebida{
        super(s,p);
     }
     public String beber(){
-        return "Sprite";
+        return "sprite";
     }
 }
 
@@ -41,6 +41,6 @@ class Fanta extends Bebida{
        super(s,p);
     }
     public String beber(){
-        return "Fanta";
+        return "fanta";
     }
 }

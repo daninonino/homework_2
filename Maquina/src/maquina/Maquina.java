@@ -12,17 +12,40 @@ public class Maquina {
         Moneda1500 mon1500=new Moneda1500();
         
         //Se crea un expendedor
-        Expendedor exp=new Expendedor(0, 1000);      
+        Expendedor exp=new Expendedor(2, 1000);      
         
-       //Se crea un comprador
-        Comprador comprador=new Comprador(mon1500, 3, exp);
+       //Se crea 5 compradores para prbar los casos.
+       //Cada comprador elige que bebida quiere elegir del expendedor, y este recibe su moneda
+       //atraves de esta accion tambien bebe la bebida y guardamos el sabor en una variable
+        Comprador comprador1=new Comprador(mon1500, 3, exp);
         
-        //El comprador elige que bebida quiere elegir del expendedor, y este recibe su moneda
-        //atraves de esta accion tambien bebe la bebida y guardamos el sabor en una variable
+        //Cuestionamos al comprador1 sobre el sabor de su bebida y su vuelto recibido
+        System.out.println("Que bebiste: "+comprador1.queBebiste());
+        System.out.println("Vuelto: "+comprador1.cuantoVuelto()+"\n");
         
-        //Cuestionamos al comprador sobre el sabor de su bebida y su vuelto recibido
-        System.out.println("Que bebiste: "+comprador.queBebiste());
-        System.out.println("Vuelto: "+comprador.cuantoVuelto());
+        Comprador comprador2=new Comprador(mon500, 1, exp);
+        
+        //Cuestionamos al comprador2 sobre el sabor de su bebida y su vuelto recibido
+        System.out.println("Que bebiste: "+comprador2.queBebiste());
+        System.out.println("Vuelto: "+comprador2.cuantoVuelto()+"\n");
+        
+        Comprador comprador3=new Comprador(null, 2, exp);
+        
+        //Cuestionamos al comprador3 sobre el sabor de su bebida y su vuelto recibido
+        System.out.println("Que bebiste: "+comprador3.queBebiste());
+        System.out.println("Vuelto: "+comprador3.cuantoVuelto()+"\n");
+        
+        Comprador comprador4=new Comprador(mon1000, 3, exp);
+        
+        //Cuestionamos al comprador4 sobre el sabor de su bebida y su vuelto recibido
+        System.out.println("Que bebiste: "+comprador4.queBebiste());
+        System.out.println("Vuelto: "+comprador4.cuantoVuelto()+"\n");
+        
+        Comprador comprador5=new Comprador(mon1500, 3, exp);
+        
+        //Cuestionamos al comprador5 sobre el sabor de su bebida y su vuelto recibido
+        System.out.println("Que bebiste: "+comprador5.queBebiste());
+        System.out.println("Vuelto: "+comprador5.cuantoVuelto()+"\n");
     
     }
     
