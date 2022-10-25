@@ -1,9 +1,7 @@
 package maquina;
 
 
-public abstract class Moneda {
-    private DepVuelto dep;
-    
+public abstract class Moneda {    
     public Moneda(){}
     
     public String getSerie(){
@@ -11,7 +9,6 @@ public abstract class Moneda {
     }
     
     public abstract int getValor();
-    
 }
 
 class Moneda1500 extends Moneda {
