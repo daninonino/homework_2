@@ -23,10 +23,4 @@ public class DepVuelto{
     public void addMoneda(Moneda mon){
         m.add(mon);
     }
-    
-    public void removeMoneda(Moneda mon){
-        m.remove(mon);
-    
-    }
-    
 }
