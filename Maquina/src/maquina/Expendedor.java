@@ -34,17 +34,17 @@ public class Expendedor{
                 switch (num) {
                     case 1 :
                         drink = Coke.getBebida();
-                        tipoBebida = "CocaCola";
+                        tipoBebida = "cocacola";
                         break;
      
                     case 2 :
                         drink = Sprite.getBebida();
-                        tipoBebida = "Sprite";
+                        tipoBebida = "sprite";
                         break;
                     
                     case 3 :
                         drink = Fanta.getBebida();
-                        tipoBebida = "Fanta";
+                        tipoBebida = "fanta";
                         break;
                 }
                 if(drink != null){
@@ -71,25 +71,5 @@ public class Expendedor{
     public Moneda getVuelto() {
         return dep2.getMoneda();
         
-    }
-}
-
-class NoHayBebidaException extends Exception {
-    public NoHayBebidaException(String text) {
-        super(text);
-    }
-}
-
-class PagoIncorrectoException extends Exception {
-
-    public PagoIncorrectoException(String text) {
-        super(text);
-    }
-}
-
-class PagoInsuficienteException extends Exception {
-
-    public PagoInsuficienteException(String text) {
-        super(text);
     }
 }
